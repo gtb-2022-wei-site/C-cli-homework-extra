@@ -31,17 +31,21 @@ For the first 5 questions which not in repo C-cli-homework
    ```shell
    #!/bin/bash
    Num=${1}
-   if [ `expr ${Num} % 2` -eq 0 ]; then
+   re='^[0-9]+$'
+   if ! [[ $Num =~ $re ]]; then
+   	echo "error: Not a number"
+   	exit 1
+   elif [ $(expr ${Num} % 2) -eq 0 ]; then
    	echo "even"
-   elif [ `expr ${Num} % 2` -eq 1 ]; then
+   elif [ $(expr ${Num} % 2) -eq 1 ]; then
    	echo "odd"
    else
    	echo "Invalid"
    fi
    ```
-
    
-
+   
+   
 4. 实现一个名为 `next` 的脚本，当在 CLI 里执行 `$ next` （`$`为提示符，不需要输入）时就返回一个整数，第一次返回 1，每执行一次加 1
    参考答案还未准备好
 
